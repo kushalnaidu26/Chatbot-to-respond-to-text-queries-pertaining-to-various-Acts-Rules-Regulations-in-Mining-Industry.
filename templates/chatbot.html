@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="chat-container">
+    <form method="POST">
+        <textarea name="query" id="chat-input" placeholder="{% if language == 'english' %}Ask your question here...{% elif language == 'hindi' %}अपना सवाल यहाँ पूछें...{% elif language == 'telugu' %}ఇక్కడ మీ ప్రశ్న అడగండి...{% elif language == 'kannada' %}ನಿಮ್ಮ ಪ್ರಶ್ನೆಯನ್ನು ಇಲ್ಲಿ ಕೇಳಿ...{% endif %}" required></textarea><br>
+        <button type="submit">
+            {% if language == 'english' %}Send{% elif language == 'hindi' %}भेजें{% elif language == 'telugu' %}పంపండి{% elif language == 'kannada' %}ಕಳುಹಿಸಿ{% endif %}
+        </button>
+    </form>
+
+    <button onclick="startVoiceInput()">🎤 Voice Input</button>
+
+    {% if response %}
+    <div class="chat-response">
+        <h3>
+            {% if language == 'english' %}Response{% elif language == 'hindi' %}उत्तर{% elif language == 'telugu' %}స్పందన{% elif language == 'kannada' %}ಪ್ರತಿಕ್ರಿಯೆ{% endif %}:
+        </h3>
+        <p>{{ response }}</p>
+    </div>
+
+    <button onclick="speakResponse(`{{ response | safe }}`)">🔊 Speak Response</button>
+
+    <div class="feedback-section" style="margin-top: 20px;">
+        <form action="{{ url_for('feedback') }}" method="GET">
+            <button type="submit">
+                {% if language == 'english' %}Give Feedback{% elif language == 'hindi' %}प्रतिक्रिया दें{% elif language == 'telugu' %}ప్రతిస్పందన ఇవ్వండి{% elif language == 'kannada' %}ಪ್ರತಿಕ್ರಿಯೆ ನೀಡಿ{% endif %}
+            </button>
+        </form>
+    </div>
+    {% endif %}
+</div>
+
+<script>
+function startVoiceInput() {
+    const recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
+    recognition.lang = "{{ 'en-IN' if language == 'english' else 'hi-IN' if language == 'hindi' else 'te-IN' if language == 'telugu' else 'kn-IN' }}";
+    recognition.start();
+    recognition.onresult = function(event) {
+        document.getElementById('chat-input').value = event.results[0][0].transcript;
+    };
+}
+
+function speakResponse(text) {
+    const synth = window.speechSynthesis;
+    const utter = new SpeechSynthesisUtterance(text);
+    utter.lang = "{{ 'en-IN' if language == 'english' else 'hi-IN' if language == 'hindi' else 'te-IN' if language == 'telugu' else 'kn-IN' }}";
+    synth.speak(utter);
+}
+</script>
+{% endblock %}
