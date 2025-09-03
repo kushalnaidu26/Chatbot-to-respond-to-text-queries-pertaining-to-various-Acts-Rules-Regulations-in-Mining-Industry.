@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        body {
+    font-family: Arial, sans-serif;
+    background-image: url('https://img.freepik.com/free-photo/large-truck-carrying-sand-platinum-mining-site-africa_181624-60189.jpg?semt=ais_hybrid&w=740'); /* Update path as needed */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+
+        .login-container {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 300px;
+            text-align: center;
+        }
+
+        h2 {
+            margin-bottom: 20px;
+            font-size: 24px;
+            color: #333;
+        }
+
+        .input-group {
+            margin-bottom: 15px;
+            text-align: left;
+        }
+
+        .input-group label {
+            font-size: 14px;
+            color: #555;
+            margin-bottom: 5px;
+            display: block;
+        }
+
+        .input-group input {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+
+        .input-group input:focus {
+            outline: none;
+            border-color: #007BFF;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        p {
+            margin-top: 10px;
+            font-size: 14px;
+            color: #555;
+        }
+
+        a {
+            color: #007BFF;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+    <script>
+        // Display pop-up if invalid credentials
+        $(document).ready(function() {
+            {% if invalid_credentials %}
+                alert("Invalid credentials, please try again!");
+            {% endif %}
+        });
+    </script>
+</head>
+<body>
+    <div class="login-container">
+        <h2>Login</h2>
+        <form method="POST">
+            <div class="input-group">
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="username" required>
+            </div>
+            <div class="input-group">
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+            <button type="submit">Login</button>
+        </form>
+        <p>Don't have an account? <a href="{{ url_for('register') }}">Register here</a></p>
+    </div>
+</body>
+</html>

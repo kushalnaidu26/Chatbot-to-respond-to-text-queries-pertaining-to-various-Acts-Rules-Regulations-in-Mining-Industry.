@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="form-container">
+    <h2>Register</h2>
+    <form method="POST">
+        <input type="text" name="username" placeholder="Username" required><br>
+        <input type="password" name="password" placeholder="Password" required><br>
+        <button type="submit">Register</button>
+    </form>
+    <p>Already have an account? <a href="{{ url_for('login') }}">Login here</a></p>
+</div>
+
+{% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+        <script>
+            // Show success message popup and redirect after 3 seconds
+            window.onload = function() {
+                alert("{{ messages[0][0] }}");  // This will show the flashed message (Registration successful)
+                setTimeout(function() {
+                    window.location.href = "{{ url_for('login') }}";  // Redirect to the login page
+                }, 3000);  // Redirect after 3 seconds
+            }
+        </script>
+    {% endif %}
+{% endwith %}
+{% endblock %}

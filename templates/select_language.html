@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="form-container">
+    <h2>Select Language / भाषा चुनें / భాష ఎంపిక చేయండి / ಭಾಷೆಯನ್ನು ಆಯ್ಕೆ ಮಾಡಿ</h2>
+    <form method="POST">
+        <select name="language" required>
+            <option value="english">English</option>
+            <option value="hindi">हिंदी</option>
+            <option value="telugu">తెలుగు</option>
+            <option value="kannada">ಕನ್ನಡ</option>
+        </select><br>
+        <button type="submit">Proceed / आगे बढ़ें / ముందుకు వెళ్ళండి / ಮುಂದುವರಿಯಿರಿ</button>
+    </form>
+</div>
+{% endblock %}
