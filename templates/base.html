@@ -1,1 +1,82 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Chatbot to respond to text queries pertaining to various Acts, Rules, and Regulations applicable to Mining industries</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" />
+    <!-- Include SimpleKeyboard CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/simple-keyboard@latest/build/css/index.css" />
+    <style>
+        body {
+            background-image: url('https://media.istockphoto.com/id/499775926/photo/coal-production-at-one-of-the-open-fields.jpg?s=612x612&w=0&k=20&c=4T1NoTq-O6KBaQxkSEu4wSxR0ezr2RC58e5zPVmj0zI=');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            color: #fff; /* Assuming light text on dark bg */
+        }
+        header {
+            background: rgba(0, 0, 0, 0.6);
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        header h1 {
+            margin: 0;
+            font-size: 1.8rem;
+        }
+        .logout-button {
+            background-color: #dc3545;
+            color: white;
+            padding: 8px 12px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+        }
+        .logout-button:hover {
+            background-color: #c82333;
+        }
+        main {
+            padding: 20px;
+            max-width: 900px;
+            margin: 0 auto;
+            background: rgba(0, 0, 0, 0.5);
+            border-radius: 8px;
+            min-height: 80vh;
+        }
+        .feedback-section button {
+            margin-top: 10px;
+            padding: 8px 16px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 14px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .feedback-section button:hover {
+            background-color: #218838;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Mining Chatbot</h1>
+        {% if session.get('user') %}
+            <a href="{{ url_for('logout') }}" class="logout-button">Logout</a>
+        {% endif %}
+    </header>
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+
+    <!-- Include SimpleKeyboard JS -->
+    <script src="https://cdn.jsdelivr.net/npm/simple-keyboard@latest/build/index.js"></script>
+    <script src="{{ url_for('static', filename='js/keyboard.js') }}"></script>
+</body>
+</html>
