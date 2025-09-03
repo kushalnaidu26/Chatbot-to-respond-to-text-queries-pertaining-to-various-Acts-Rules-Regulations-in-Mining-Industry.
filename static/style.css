@@ -1,0 +1,81 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-image: url('https://cdn.pixabay.com/photo/2017/03/28/12/10/excavators-2183300_1280.jpg');
+    background-size: cover;
+    background-position: center;
+    color: #fff;
+}
+
+header {
+    background-color: rgba(0, 0, 0, 0.7);
+    padding: 20px;
+    text-align: center;
+}
+
+.logout-button {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background-color: #ff4d4d;
+    color: #fff;
+    padding: 10px;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+.form-container, .chat-container {
+    background-color: rgba(0, 0, 0, 0.6);
+    margin: 50px auto;
+    padding: 20px;
+    width: 50%;
+    border-radius: 10px;
+}
+.logout-container {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.logout-container button {
+    padding: 10px 20px;
+    background-color: #f44336; /* Red color */
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 5px;
+}
+
+.logout-container button:hover {
+    background-color: #d32f2f;
+}
+
+
+input, select, textarea {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: none;
+    border-radius: 5px;
+}
+
+button {
+    padding: 10px 20px;
+    background-color: #0066cc;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.chat-response {
+    margin-top: 20px;
+    background-color: rgba(255, 255, 255, 0.2);
+    padding: 15px;
+    border-radius: 5px;
+}
+
+.keyboard-container {
+    margin: 20px auto;
+    width: 50%;
+}
